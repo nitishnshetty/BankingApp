@@ -240,16 +240,11 @@ class User {
             if (typeof balance != "number") {
                 throw new Validation("balance input is wrong")
             }
-            let accountObj = new Account(bankID,balance)
-
-            let indexOfBanks = this.findBank(bankID)
-            User.allBanks[indexOfBanks].this.accounts.push(accountObj)
-            // let accountObj = new Account(balance)
-            // this.accounts.push(accountObj)
-            //  console.log(this.accounts)
-            // return accountObj
-            console.log(this.banks[indexOfBanks]);
-            return this.banks[indexOfBanks]
+            let accountObj = new Account(balance)
+            let indexOfBank = this.findBank(bankID)
+            User.allBanks[indexOfBank].accountsInBank.push(newAccount)
+            this.accounts.push(accountObj)
+            return this.accounts
         } catch (error) {
             return error
         }
